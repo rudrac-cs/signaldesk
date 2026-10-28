@@ -70,13 +70,29 @@ docs/            Scope, architecture, team tasks
 - `GET /api/transactions`: synthetic transaction list with reasons and risk level
 - `GET /api/transactions/{transaction_id}`: single transaction or 404
 
-## Suggested 4-person ownership
-1. **Project lead / integration:** GitHub, requirements, API contracts, review, optional Jack Henry research
-2. **Frontend:** transaction table, filters, detail pane, UX
-3. **Backend:** FastAPI routes, schemas, review notes/decisions later
-4. **Risk + data:** synthetic data, transparent rule scoring, evaluation cases and tests
+## Team Structure
 
-Team members should open issues, work on separate `feature/...` branches, and submit pull requests to `main`. See `docs/TEAM_TASKS.md` for the first sprint.
+SignalDesk is being developed by the FinTech UTD team, consisting of one Project Lead and four developers.
+
+| Role | Responsibilities |
+|---|---|
+| Project Lead | Project planning, team coordination, task assignments, deadlines, pull request oversight, and Jack Henry communication |
+| Frontend Developer | React/TypeScript dashboard, transaction tables, filtering, and investigation interface |
+| Backend Developer | FastAPI endpoints, application logic, transaction review workflow, and external API integration |
+| Database Engineer | PostgreSQL schema design, database migrations, transaction storage, relationships, and queries |
+| Fraud Detection Engineer | Explainable fraud detection rules, risk scoring, synthetic scenarios, and evaluation |
+
+## Development Workflow
+
+1. Every developer should work on tasks assigned through GitHub Issues.
+2. Create a separate `feature/...` branch for each task.
+3. Do not push code changes directly to `main`.
+4. Submit a pull request when work is ready for review.
+5. Coordinate shared API contracts and database changes before implementation.
+6. Never commit secrets, real banking credentials, or customer information.
+7. Communicate blockers early and provide brief weekly progress updates.
+
+See `docs/TEAM_TASKS.md` for current assignments and deadlines.
 
 ## Jack Henry integration
 Potential future integration only, subject to approved developer platform access, documentation, and sandbox permissions. Keep a mock-data mode; never assume a live banking API is available.
