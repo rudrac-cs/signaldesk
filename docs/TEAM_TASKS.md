@@ -1,37 +1,46 @@
-# First sprint: four-person team
+# SignalDesk Team Responsibilities
 
-## Shared objective
-Demo a reviewer who can open a transaction, see a transparent risk explanation, and record a proposed review outcome (no real bank actions).
+## Project Lead
+- Manage project scope, deadlines, and team meetings.
+- Create and assign GitHub Issues.
+- Coordinate Jack Henry developer platform access.
+- Track project milestones and review completed deliverables.
 
-## Issue 1: Frontend filters and states
-**Owner:** Frontend
-- Add search by merchant/id and filter by risk level.
-- Handle loading, errors, and empty results.
-- Acceptance: filters work with the synthetic API response.
+## Frontend Developer
+- Build the React and TypeScript dashboard.
+- Implement transaction tables, filters, and investigation screens.
+- Connect the frontend to backend APIs.
 
-## Issue 2: Backend review workflow
-**Owner:** Backend
-- Propose `ReviewDecision` schema with `transaction_id`, `decision`, `note`, `reviewer`, `timestamp`.
-- Add API POST/GET for decisions, initially in memory. No authentication claims.
-- Validate inputs and add tests.
-- Acceptance: API docs and tests demonstrate workflow.
+## Backend Developer
+- Develop FastAPI endpoints and application logic.
+- Connect the backend to PostgreSQL.
+- Support transaction reviews and investigation workflows.
+- Research Jack Henry API integration.
 
-## Issue 3: Risk rules and synthetic cases
-**Owner:** Risk/data
-- Move demo risk rules into `backend/app/risk.py` with deterministic functions.
-- Include edge cases and tests. Document thresholds as illustrative.
-- Acceptance: reasons are legible and outcomes reproducible.
+## Database Engineer
+- Design the PostgreSQL schema and relationships.
+- Build and maintain database migrations.
+- Create synthetic transaction data.
+- Optimize queries and document database setup.
 
-## Issue 4: Integration and documentation
-**Owner:** Lead
-- Establish GitHub issues, branch protection if available, README checks.
-- Define response contracts and review PRs.
-- Research only authorized Jack Henry sandbox options and document assumptions.
-- Acceptance: fresh clone runs on teammate laptops and all changes land via PR.
+## Fraud Detection Engineer
+- Implement explainable transaction risk scoring.
+- Develop and test fraud detection rules.
+- Return risk scores and reasons through the backend.
+- Evaluate rules using labeled synthetic data.
 
-## Collaboration rules
-- Never push credentials, sensitive banking data, or `.env` files.
-- Branch from updated `main`: `git switch -c feature/short-description`.
-- Keep each PR narrow; mention which issue it closes.
-- Run backend tests and frontend build before review.
-- Request at least one teammate's review before merge.
+## Development Guidelines
+1. Create a separate branch for each task.
+2. Reference a GitHub Issue in every pull request.
+3. Do not commit API credentials, passwords, or private financial data.
+4. Document relevant changes and include tests when appropriate.
+5. Get technical review before merging significant code changes.
+6. Communicate blockers early.
+
+## Week 1 Deadline: November 2, 2026
+- Everyone has repository access and has reviewed the starter code.
+- Frontend: outline initial screens and components.
+- Backend: propose API endpoints and data contracts.
+- Database: draft initial schema and relationships.
+- Fraud Detection: propose 3 to 5 explainable detection rules.
+- Project Lead: confirm responsibilities, track progress, and check Jack Henry access.
