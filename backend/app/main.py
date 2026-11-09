@@ -1,3 +1,6 @@
+from typing import Literal
+from pydantic import BaseModel
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from .sample_data import TRANSACTIONS
@@ -28,3 +31,25 @@ def get_transaction(transaction_id: str):
         if transaction["id"] == transaction_id:
             return transaction
     raise HTTPException(status_code=404, detail="Transaction not found")
+
+
+
+
+
+class ReviewRequest(BaseModel):
+    status: Literal["legitimate", "escalated"]
+
+
+@app.patch("/api/transactions/{transaction_id}/review")
+def review_transaction(transaction_id: str, review: ReviewRequest):
+    for transaction in TRANSACTIONS:
+        if transaction["id"] == transaction_id:
+            transaction["status"] = review.status
+            return transaction
+
+    raise HTTPException(
+        status_code=404,
+        detail="Transaction not found"
+    )
+
+
